@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://tjw8kh2syx7k"]
+
+[ext_resource type="Theme" uid="uid://b1g4mlja2is1k" path="res://fontbase.tres" id="1_r8aoj"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1023.0
+offset_bottom = 576.0
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Bumbo" type="Button" parent="Buttons"]
+offset_right = 1024.0
+offset_bottom = 288.0
+theme = ExtResource("1_r8aoj")
+text = "BUMBO"
+
+[node name="Caixa" type="Button" parent="Buttons"]
+offset_top = 289.0
+offset_right = 1024.0
+offset_bottom = 577.0
+theme = ExtResource("1_r8aoj")
+text = "CAIXA"
