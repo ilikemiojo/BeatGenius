@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://wthj0k4trqok"]
+[gd_scene load_steps=5 format=3 uid="uid://bt37unkevrx8s"]
 
-[ext_resource type="Theme" uid="uid://b1g4mlja2is1k" path="res://fontbase.tres" id="1_r8aoj"]
+[ext_resource type="Theme" uid="uid://b1g4mlja2is1k" path="res://fontes/fontbase.tres" id="1_r8aoj"]
 [ext_resource type="Script" path="res://Buttons.gd" id="1_repoq"]
 [ext_resource type="AudioStream" uid="uid://bgg3m4f8tu3bp" path="res://audio/bassdrum_default.mp3" id="3_eqb40"]
 [ext_resource type="AudioStream" uid="uid://cywt8wmr4nhou" path="res://audio/snare_default.mp3" id="4_dm4c3"]
