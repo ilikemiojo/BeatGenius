@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn8ogfs5av3aj"]
+
+[ext_resource type="Script" path="res://scripts/Conductor.gd" id="1_78tnp"]
+[ext_resource type="AudioStream" uid="uid://jnrgarhjqw6j" path="res://audio/baiao_01.mp3" id="2_tamme"]
+
+[node name="Conductor" type="AudioStreamPlayer"]
+script = ExtResource("1_78tnp")
+
+[node name="Baiao_01" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tamme")
+
+[node name="Feedback" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1024.0
+offset_bottom = 49.0
+theme_type_variation = &"HeaderLarge"
+text = "FEEDBACK"
+horizontal_alignment = 1
+
+[connection signal="beat" from="." to="." method="_on_beat"]

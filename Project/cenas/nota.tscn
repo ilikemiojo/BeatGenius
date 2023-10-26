@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://hi36yaktvkrx"]
+
+[ext_resource type="Script" path="res://scripts/nota.gd" id="1_7gwgw"]
+[ext_resource type="Texture2D" uid="uid://cnyjails03kl2" path="res://icon.svg" id="1_a24uh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3hh5"]
+size = Vector2(119.742, 119.742)
+
+[node name="Nota" type="Node2D"]
+script = ExtResource("1_7gwgw")
+
+[node name="Nota" type="Sprite2D" parent="."]
+scale = Vector2(0.484375, 0.484375)
+texture = ExtResource("1_a24uh")
+
+[node name="Area2D" type="Area2D" parent="Nota"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nota/Area2D"]
+position = Vector2(3.05176e-05, 0)
+shape = SubResource("RectangleShape2D_n3hh5")

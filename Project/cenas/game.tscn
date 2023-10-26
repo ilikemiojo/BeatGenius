@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqvs7ssbae2r2"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_u3yok"]
+[ext_resource type="AudioStream" uid="uid://bgg3m4f8tu3bp" path="res://audio/bassdrum_default.mp3" id="3_eqb40"]
+[ext_resource type="AudioStream" uid="uid://cywt8wmr4nhou" path="res://audio/snare_default.mp3" id="4_dm4c3"]
+[ext_resource type="PackedScene" uid="uid://hi36yaktvkrx" path="res://cenas/nota.tscn" id="4_koprs"]
+[ext_resource type="PackedScene" uid="uid://bn8ogfs5av3aj" path="res://cenas/conductor.tscn" id="5_28vy3"]
+
+[sub_resource type="GDScript" id="GDScript_taj8r"]
+script/source = "extends Node2D
+
+func _on_bumbo_pressed():
+	$bumboSound.play()
+	
+func _input(event): #Tocar com as Setas do Teclado
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_LEFT:
+			$caixaSound.play() # (<-) = Caixa
+		if event.pressed and event.keycode == KEY_RIGHT:
+			$bumboSound.play() # (->) = Bumbo
+
+func _on_caixa_pressed():
+	$caixaSound.play()
+"
+
+[sub_resource type="Theme" id="Theme_5ngg5"]
+default_font_size = 80
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw5h0"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_u3yok")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1023.0
+offset_bottom = 576.0
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="Buttons" type="Node2D" parent="."]
+script = SubResource("GDScript_taj8r")
+
+[node name="Bumbo" type="Button" parent="Buttons"]
+offset_right = 1024.0
+offset_bottom = 288.0
+theme = SubResource("Theme_5ngg5")
+text = "BUMBO"
+metadata/_edit_use_anchors_ = true
+
+[node name="Caixa" type="Button" parent="Buttons"]
+offset_top = 289.0
+offset_right = 1024.0
+offset_bottom = 577.0
+theme = SubResource("Theme_5ngg5")
+text = "CAIXA"
+
+[node name="bumboSound" type="AudioStreamPlayer2D" parent="Buttons"]
+stream = ExtResource("3_eqb40")
+volume_db = 5.0
+
+[node name="caixaSound" type="AudioStreamPlayer2D" parent="Buttons"]
+stream = ExtResource("4_dm4c3")
+volume_db = 5.0
+
+[node name="Conductor" parent="." instance=ExtResource("5_28vy3")]
+
+[node name="Nota" parent="." instance=ExtResource("4_koprs")]
+
+[node name="Colisor" type="Area2D" parent="."]
+position = Vector2(511, 262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisor"]
+position = Vector2(0, 26)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_iw5h0")
+
+[connection signal="pressed" from="Buttons/Bumbo" to="." method="_on_bumbo_pressed"]
+[connection signal="pressed" from="Buttons/Bumbo" to="Buttons" method="_on_bumbo_pressed"]
+[connection signal="pressed" from="Buttons/Caixa" to="Buttons" method="_on_caixa_pressed"]
+[connection signal="area_entered" from="Colisor" to="." method="_on_colisor_area_entered"]
+[connection signal="area_exited" from="Colisor" to="." method="_on_colisor_area_exited"]
