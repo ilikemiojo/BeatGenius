@@ -1,27 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqvs7ssbae2r2"]
+[gd_scene load_steps=8 format=3 uid="uid://bqvs7ssbae2r2"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_u3yok"]
 [ext_resource type="AudioStream" uid="uid://bgg3m4f8tu3bp" path="res://audio/bassdrum_default.mp3" id="3_eqb40"]
 [ext_resource type="AudioStream" uid="uid://cywt8wmr4nhou" path="res://audio/snare_default.mp3" id="4_dm4c3"]
 [ext_resource type="PackedScene" uid="uid://hi36yaktvkrx" path="res://cenas/nota.tscn" id="4_koprs"]
 [ext_resource type="PackedScene" uid="uid://bn8ogfs5av3aj" path="res://cenas/conductor.tscn" id="5_28vy3"]
-
-[sub_resource type="GDScript" id="GDScript_taj8r"]
-script/source = "extends Node2D
-
-func _on_bumbo_pressed():
-	$bumboSound.play()
-	
-func _input(event): #Tocar com as Setas do Teclado
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_LEFT:
-			$caixaSound.play() # (<-) = Caixa
-		if event.pressed and event.keycode == KEY_RIGHT:
-			$bumboSound.play() # (->) = Bumbo
-
-func _on_caixa_pressed():
-	$caixaSound.play()
-"
 
 [sub_resource type="Theme" id="Theme_5ngg5"]
 default_font_size = 80
@@ -39,7 +22,6 @@ offset_bottom = 576.0
 color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [node name="Buttons" type="Node2D" parent="."]
-script = SubResource("GDScript_taj8r")
 
 [node name="Bumbo" type="Button" parent="Buttons"]
 offset_right = 1024.0

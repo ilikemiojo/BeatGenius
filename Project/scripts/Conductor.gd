@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-var bpm := 100
+var bpm := 90
 var measures := 4
 
 var song_position = 0.0
@@ -27,6 +27,9 @@ func _ready():
 func _process(delta):
 	$Feedback.text = str($Baiao_01.get_playback_position())
 
+func _on_beat(position):
+	print(position)
 
-func _on_beat(positon):
-	pass # Replace with function body.
+
+func _on_timer_timeout():
+	print('beat')
