@@ -1,7 +1,13 @@
 extends Node2D
 
 var hit = false
-var song_position = 0.0
+var bumboHit = false
+var caixaHit = false
+var beat_atual = 0
+var posicaoBumbo = 0
+var posicaoCaixa = 0
+@export var baiao_01_bumbo = []
+@export var baiao_01_caixa = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,40 +16,57 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func nota_process_mode(status):
-	if(status):
-		$Nota.set_process_mode(PROCESS_MODE_INHERIT)
-		$Nota.visible = true
-		hit = true
-	else:
-		$Nota.set_process_mode(PROCESS_MODE_DISABLED)
-		$Nota.visible = false
-		hit = false
+func nota_process_mode(status, tipo):
+	if(tipo == 'bumbo'):
+		if(status):
+			$Nota.set_process_mode(PROCESS_MODE_INHERIT)
+			$Nota.visible = true
+			bumboHit = true
+		else:
+			$Nota.set_process_mode(PROCESS_MODE_DISABLED)
+			$Nota.visible = false
+			bumboHit = false
+	if(tipo == 'caixa'):
+		if(status):
+			$Nota.set_process_mode(PROCESS_MODE_INHERIT)
+			$Nota.visible = true
+			caixaHit = true
+		else:
+			$Nota.set_process_mode(PROCESS_MODE_DISABLED)
+			$Nota.visible = false
+			caixaHit = false
 
-func _physics_process(delta):
-	song_position = $Conductor/Baiao_01.get_playback_position();
-	if(song_position >= 2.55 and song_position <= 2.75):
-		nota_process_mode(true)
-	else: 
-		nota_process_mode(false)
-
-func _on_colisor_area_entered(area):
-	hit = true
-	print("entrou")
-
-func _on_colisor_area_exited(area):
-	hit = false
-	print("saiu")
+func _process(delta):
+	if(posicaoBumbo < baiao_01_bumbo.size()):
+		if(beat_atual == baiao_01_bumbo[posicaoBumbo]):
+			if(!bumboHit):
+				nota_process_mode(true, 'bumbo')
+				print('nota')
+		elif(bumboHit):
+			nota_process_mode(false, 'bumbo')
+			posicaoBumbo += 1
+	if(posicaoCaixa < baiao_01_caixa.size()):
+		if(beat_atual == baiao_01_caixa[posicaoCaixa]):
+			if(!caixaHit):
+				nota_process_mode(true, 'caixa')
+				print('nota')
+		elif(caixaHit):
+			nota_process_mode(false, 'caixa')
+			posicaoCaixa += 1
 
 func _on_bumbo_pressed():
 	$Buttons/bumboSound.play()
-	if(hit):
+	if(bumboHit):
 		print('acertou')
 	else:
 		print('errou')
 	
 func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
+	if(caixaHit):
+		print('acertou')
+	else:
+		print('errou')
 	
 func _input(event): #Tocar com as Setas do Teclado
 	if event is InputEventKey:
@@ -51,3 +74,7 @@ func _input(event): #Tocar com as Setas do Teclado
 			_on_caixa_pressed() # (<-) = Caixa
 		if event.pressed and event.keycode == KEY_RIGHT:
 			_on_bumbo_pressed() # (->) = Bumbo
+
+
+func _on_conductor_beat(beat):
+	beat_atual = beat
