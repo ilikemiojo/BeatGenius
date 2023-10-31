@@ -21,5 +21,4 @@ horizontal_alignment = 1
 wait_time = 0.66
 autostart = true
 
-[connection signal="beat" from="." to="." method="_on_beat"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

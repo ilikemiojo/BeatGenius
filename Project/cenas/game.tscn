@@ -48,6 +48,7 @@ volume_db = 5.0
 [node name="Conductor" parent="." instance=ExtResource("5_28vy3")]
 
 [node name="Nota" parent="." instance=ExtResource("4_koprs")]
+position = Vector2(511, 288)
 
 [node name="Colisor" type="Area2D" parent="."]
 position = Vector2(511, 262)
@@ -59,6 +60,6 @@ shape = SubResource("RectangleShape2D_iw5h0")
 
 [connection signal="pressed" from="Buttons/Bumbo" to="." method="_on_bumbo_pressed"]
 [connection signal="pressed" from="Buttons/Bumbo" to="Buttons" method="_on_bumbo_pressed"]
-[connection signal="pressed" from="Buttons/Caixa" to="Buttons" method="_on_caixa_pressed"]
+[connection signal="pressed" from="Buttons/Caixa" to="." method="_on_caixa_pressed"]
 [connection signal="area_entered" from="Colisor" to="." method="_on_colisor_area_entered"]
 [connection signal="area_exited" from="Colisor" to="." method="_on_colisor_area_exited"]

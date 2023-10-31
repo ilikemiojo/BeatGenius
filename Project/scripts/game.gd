@@ -1,15 +1,31 @@
 extends Node2D
 
 var hit = false
+var song_position = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Nota.set_process_mode(PROCESS_MODE_DISABLED)
+	$Nota.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func nota_process_mode(status):
+	if(status):
+		$Nota.set_process_mode(PROCESS_MODE_INHERIT)
+		$Nota.visible = true
+		hit = true
+	else:
+		$Nota.set_process_mode(PROCESS_MODE_DISABLED)
+		$Nota.visible = false
+		hit = false
+
+func _physics_process(delta):
+	song_position = $Conductor/Baiao_01.get_playback_position();
+	if(song_position >= 2.55 and song_position <= 2.75):
+		nota_process_mode(true)
+	else: 
+		nota_process_mode(false)
 
 func _on_colisor_area_entered(area):
 	hit = true

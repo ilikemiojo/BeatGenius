@@ -14,7 +14,6 @@ scale = Vector2(0.484375, 0.484375)
 texture = ExtResource("1_a24uh")
 
 [node name="Area2D" type="Area2D" parent="Nota"]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nota/Area2D"]
 position = Vector2(3.05176e-05, 0)
