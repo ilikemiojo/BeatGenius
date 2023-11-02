@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://chonloew42cxu"]
+[gd_scene load_steps=3 format=3 uid="uid://dep5eo4f2hu0p"]
 
 [ext_resource type="Texture2D" uid="uid://4jlc885lbnx3" path="res://fontes/parallax-space-backgound.png" id="1_li81j"]
 [ext_resource type="Script" path="res://scripts/MenuInicial.gd" id="1_rjhlc"]
