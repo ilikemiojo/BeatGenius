@@ -1,5 +1,8 @@
 extends Node2D
 
+var score = 0
+@export var hitPoints = 10
+var comboMultiplier = 1
 var hit = false
 var bumboHit = false
 var caixaHit = false
@@ -13,6 +16,7 @@ var posicaoCaixa = 0
 func _ready():
 	$Nota.set_process_mode(PROCESS_MODE_DISABLED)
 	$Nota.visible = false
+	$HUD.update_score(score)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,6 +61,7 @@ func _process(delta):
 func _on_bumbo_pressed():
 	$Buttons/bumboSound.play()
 	if(bumboHit):
+		update_score()
 		print('acertou')
 	else:
 		print('errou')
@@ -64,6 +69,7 @@ func _on_bumbo_pressed():
 func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
 	if(caixaHit):
+		update_score()
 		print('acertou')
 	else:
 		print('errou')
@@ -78,3 +84,7 @@ func _input(event): #Tocar com as Setas do Teclado
 
 func _on_conductor_beat(beat):
 	beat_atual = beat
+
+func update_score():
+	score += hitPoints * comboMultiplier
+	$HUD.update_score(score)

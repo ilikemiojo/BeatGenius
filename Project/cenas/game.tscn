@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqvs7ssbae2r2"]
+[gd_scene load_steps=8 format=3 uid="uid://bqvs7ssbae2r2"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_u3yok"]
 [ext_resource type="AudioStream" uid="uid://bgg3m4f8tu3bp" path="res://audio/bassdrum_default.mp3" id="3_eqb40"]
 [ext_resource type="AudioStream" uid="uid://cywt8wmr4nhou" path="res://audio/snare_default.mp3" id="4_dm4c3"]
 [ext_resource type="PackedScene" uid="uid://hi36yaktvkrx" path="res://cenas/nota.tscn" id="4_koprs"]
 [ext_resource type="PackedScene" uid="uid://bn8ogfs5av3aj" path="res://cenas/conductor.tscn" id="5_28vy3"]
+[ext_resource type="PackedScene" uid="uid://dfefisliqsrin" path="res://cenas/HUD.tscn" id="6_4h18f"]
 
 [sub_resource type="Theme" id="Theme_5ngg5"]
 default_font_size = 80
@@ -49,6 +50,8 @@ volume_db = 5.0
 
 [node name="Nota" parent="." instance=ExtResource("4_koprs")]
 position = Vector2(511, 288)
+
+[node name="HUD" parent="." instance=ExtResource("6_4h18f")]
 
 [connection signal="pressed" from="Buttons/Bumbo" to="." method="_on_bumbo_pressed"]
 [connection signal="pressed" from="Buttons/Bumbo" to="Buttons" method="_on_bumbo_pressed"]
