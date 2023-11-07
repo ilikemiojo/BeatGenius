@@ -9,11 +9,13 @@ var beat_atual = 0
 
 signal beat()
 signal baiao_01_finished()
+signal baiao_02_finished()
+signal baiao_03_finished()
 signal hit_time();
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Baiao_01.play()
+	$Baiao.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,13 +24,15 @@ func _process(delta):
 func _on_timer_timeout():
 	beat_atual += 0.25
 	emit_signal("beat", beat_atual)
+	if(beat_atual == 17):
+		emit_signal("baiao_01_finished")
+	if(beat_atual == 33):
+		emit_signal("baiao_02_finished")
+	if(beat_atual == 49):
+		emit_signal("baiao_03_finished")
 
-
-func _on_baiao_01_finished():
-	emit_signal("baiao_01_finished")
-
-func restart():
+func restart(position, beat):
 	$Timer.stop()
-	beat_atual = 0
-	$Baiao_01.play(0.0)
+	beat_atual = beat
+	$Baiao.play(position)
 	$Timer.start()
