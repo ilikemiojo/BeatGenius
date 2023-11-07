@@ -28,5 +28,7 @@ func _on_baiao_01_finished():
 	emit_signal("baiao_01_finished")
 
 func restart():
+	$Timer.stop()
 	beat_atual = 0
 	$Baiao_01.play(0.0)
+	$Timer.start()

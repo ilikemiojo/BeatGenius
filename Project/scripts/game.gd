@@ -82,6 +82,7 @@ func _input(event): #Tocar com as Setas do Teclado
 
 func _on_conductor_beat(beat):
 	beat_atual = beat
+	print(beat)
 
 func update_score():
 	score += hitPoints * comboMultiplier
