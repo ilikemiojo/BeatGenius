@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://c5crr5smmhi2j"
+uid="uid://bgg3m4f8tu3bp"
 path="res://.godot/imported/bassdrum_default.mp3-cc726daeca4b8431cbe686e9d35e788a.mp3str"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/bassdrum_default.mp3-cc726daeca4b8431cbe686e9
 [params]
 
 loop=false
-loop_offset=0.0
-bpm=0.0
+loop_offset=0
+bpm=0
 beat_count=0
 bar_beats=4
