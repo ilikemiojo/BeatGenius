@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn8ogfs5av3aj"]
 
 [ext_resource type="Script" path="res://scripts/Conductor.gd" id="1_78tnp"]
-[ext_resource type="AudioStream" uid="uid://jnrgarhjqw6j" path="res://audio/baiao_01.mp3" id="2_tamme"]
+[ext_resource type="AudioStream" uid="uid://dkcbcl4bpkfw0" path="res://audio/baiao.mp3" id="2_4fgaj"]
 
 [node name="Conductor" type="AudioStreamPlayer"]
 script = ExtResource("1_78tnp")
 
-[node name="Baiao_01" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_tamme")
+[node name="Baiao" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4fgaj")
+volume_db = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.165
