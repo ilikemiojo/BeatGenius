@@ -1,7 +1,7 @@
 extends Node2D
 
 var score = 0
-@export var hitPoints = 10
+#@export var hitPoints = 10
 var comboMultiplier = 1
 var bumboHit = false
 var caixaHit = false
@@ -64,18 +64,25 @@ func _process(delta):
 func _on_bumbo_pressed():
 	$Buttons/bumboSound.play()
 	if(bumboHit):
-		update_score()
+		update_score(10)
 		print('acertou')
+		bumboHit = false
 	else:
 		print('errou')
+		if(score > 0):
+			update_score(-10)
 	
 func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
 	if(caixaHit):
-		update_score()
+		update_score(10)
 		print('acertou')
+		caixaHit = false
 	else:
 		print('errou')
+		if(score > 0):
+			update_score(-10)
+		
 	
 func _input(event): #Tocar com as Setas do Teclado
 	if event is InputEventKey:
@@ -90,7 +97,7 @@ func _on_conductor_beat(beat):
 	print(posicaoBumbo)
 	print(posicaoCaixa)
 
-func update_score():
+func update_score(hitPoints):
 	score += hitPoints * comboMultiplier
 	$HUD.update_score(score)
 
