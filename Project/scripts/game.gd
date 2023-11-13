@@ -8,6 +8,7 @@ var caixaHit = false
 var beat_atual = 0
 var posicaoBumbo = 0
 var posicaoCaixa = 0
+var score_minimo = 0
 
 @export var baiao_01_bumbo = [12.0, 12.75, 14.0, 14.75, 16.0, 28.0, 28.75, 30.0, 30.75, 32.0, 44.0, 44.75, 45.75, 46.0, 46.75, 47.5, 48.0]
 @export var baiao_01_caixa = [13.5, 15.5, 28.5, 29.5, 30.5, 31.5, 44.5, 45.5, 46.5, 47.25]
@@ -69,7 +70,7 @@ func _on_bumbo_pressed():
 		bumboHit = false
 	else:
 		print('errou')
-		if(score > 0):
+		if(score > score_minimo):
 			update_score(-10)
 	
 func _on_caixa_pressed():
@@ -80,7 +81,7 @@ func _on_caixa_pressed():
 		caixaHit = false
 	else:
 		print('errou')
-		if(score > 0):
+		if(score > score_minimo):
 			update_score(-10)
 		
 	
@@ -110,6 +111,7 @@ func _on_conductor_baiao_01_finished():
 		$HUD.update_score(0)
 		$Conductor.restart(0.0, 0)
 	else:
+		score_minimo = 70
 		print('você passou da primeira fase')
 		
 
@@ -123,16 +125,18 @@ func _on_conductor_baiao_02_finished():
 		$HUD.update_score(70)
 		$Conductor.restart(11.34, 17)
 	else:
+		score_minimo = 160
 		print('você passou da segunda fase')
 
 
 func _on_conductor_baiao_03_finished():
-	if(score < 290):
+	if(score < 270):
 		print('você falhou')
 		posicaoBumbo = 10
 		posicaoCaixa = 6
-		score = 180
-		$HUD.update_score(180)
+		score = 160
+		$HUD.update_score(160)
 		$Conductor.restart(22.02, 33)
 	else:
+		score_minimo = 270
 		print('você passou da terceira fase')
