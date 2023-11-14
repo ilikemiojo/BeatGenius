@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ysshtrc6c7u"]
+
+[ext_resource type="Texture2D" uid="uid://4jlc885lbnx3" path="res://fontes/parallax-space-backgound.png" id="1_miq34"]
+
+[node name="MenuFeedback" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_miq34")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+alignment = 1
+
+[node name="Feedback" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Feedback"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pontuacao" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "999 pts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Retry" type="Button" parent="TextureRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Tentar Novamente"
+
+[node name="Menu" type="Button" parent="TextureRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Retornar ao Menu"

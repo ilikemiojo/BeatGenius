@@ -36,3 +36,7 @@ func restart(position, beat):
 	beat_atual = beat
 	$Baiao.play(position)
 	$Timer.start()
+	
+func pauseTimer():
+	$Timer.stop()
+	$Baiao.stop()

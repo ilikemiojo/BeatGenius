@@ -1,24 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqvs7ssbae2r2"]
+[gd_scene load_steps=9 format=3 uid="uid://bqvs7ssbae2r2"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_u3yok"]
 [ext_resource type="AudioStream" uid="uid://c5crr5smmhi2j" path="res://audio/bassdrum_default.mp3" id="3_eqb40"]
 [ext_resource type="AudioStream" uid="uid://dvfbawegmhb2c" path="res://audio/snare_default.mp3" id="4_dm4c3"]
 [ext_resource type="PackedScene" uid="uid://bn8ogfs5av3aj" path="res://cenas/conductor.tscn" id="5_28vy3"]
-[ext_resource type="PackedScene" uid="uid://dfefisliqsrin" path="res://cenas/HUD.tscn" id="6_4h18f"]
+[ext_resource type="PackedScene" uid="uid://c7veamggaxxs2" path="res://cenas/HUD.tscn" id="6_4h18f"]
 [ext_resource type="Texture2D" uid="uid://cnyjails03kl2" path="res://icon.svg" id="6_kwrbi"]
+[ext_resource type="PackedScene" uid="uid://2ysshtrc6c7u" path="res://cenas/menu_feedback.tscn" id="7_iy3l5"]
 
 [sub_resource type="Theme" id="Theme_5ngg5"]
 default_font_size = 80
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u3yok")
-
-[node name="Background" type="Node2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-offset_right = 1023.0
-offset_bottom = 576.0
-color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [node name="Buttons" type="Node2D" parent="."]
 
@@ -52,6 +46,18 @@ volume_db = 5.0
 position = Vector2(512, 289)
 scale = Vector2(0.671875, 0.671875)
 texture = ExtResource("6_kwrbi")
+
+[node name="MenuFeedback" parent="." instance=ExtResource("7_iy3l5")]
+process_mode = 3
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 256.0
+offset_top = 144.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="Buttons/Bumbo" to="." method="_on_bumbo_pressed"]
 [connection signal="pressed" from="Buttons/Caixa" to="." method="_on_caixa_pressed"]
