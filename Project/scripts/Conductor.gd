@@ -40,3 +40,6 @@ func restart(position, beat):
 func pauseTimer():
 	$Timer.stop()
 	$Baiao.stop()
+
+func failSound():
+	$Fail.play()
