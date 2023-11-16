@@ -15,6 +15,10 @@ var fase_atual = 1
 @export var baiao_01_caixa = [13.5, 15.5, 28.5, 29.5, 30.5, 31.5, 44.5, 45.5, 46.5, 47.25]
 
 func _ready():
+	var free_play = Singletons.free_play
+	if(free_play == 1):
+		$Conductor.pauseTimer()
+		$HUD.hide()
 	$Nota.hide()
 	$HUD.update_score(score)
 	$MenuFeedback.scale = Vector2(0,0)
@@ -66,9 +70,6 @@ func _input(event): #Tocar com as Setas do Teclado
 func _on_conductor_beat(beat):
 	beat_atual = beat
 	test_nota()
-#	print(beat)
-#	print(posicaoBumbo)
-#	print(posicaoCaixa)
 
 func update_score(hitPoints):
 	score += hitPoints * comboMultiplier
@@ -98,6 +99,7 @@ func _on_conductor_baiao_03_finished():
 func abrir_menu_derrota():
 	$MenuFeedback/TextureRect/VBoxContainer/Feedback.text = 'Você Perdeu!'
 	$MenuFeedback/TextureRect/VBoxContainer/Pontuacao.text = str(score)+' pts'
+	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
 	$Conductor.failSound()
 	$Conductor.pauseTimer()
@@ -105,6 +107,8 @@ func abrir_menu_derrota():
 func abrir_menu_vitoria():
 	$MenuFeedback/TextureRect/VBoxContainer/Feedback.text = 'Você Venceu!'
 	$MenuFeedback/TextureRect/VBoxContainer/Pontuacao.text = str(score)+' pts'
+	$MenuFeedback/TextureRect/VBoxContainer/VBoxContainer/Retry.hide()
+	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
 	#Conductor.SOM DA VITORIA!!!
 	$Conductor.pauseTimer()
@@ -113,6 +117,7 @@ func restart_fase_selecionada(faseScore, faseTempo, faseBeat, posBumbo, posCaixa
 	posicaoBumbo = posBumbo
 	posicaoCaixa = posCaixa
 	score = faseScore
+	$HUD.show()
 	$HUD.update_score(score)
 	$Conductor.restart(faseTempo, faseBeat)
 	

@@ -11,7 +11,6 @@ signal beat()
 signal baiao_01_finished()
 signal baiao_02_finished()
 signal baiao_03_finished()
-signal hit_time();
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

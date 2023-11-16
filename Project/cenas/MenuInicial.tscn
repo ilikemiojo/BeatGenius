@@ -46,9 +46,14 @@ layout_mode = 2
 layout_mode = 2
 text = "Iniciar"
 
+[node name="Free Play" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Free Play"
+
 [node name="Sair" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sair"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Free Play" to="." method="_on_free_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
