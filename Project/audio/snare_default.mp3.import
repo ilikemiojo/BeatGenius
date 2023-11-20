@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://cywt8wmr4nhou"
+uid="uid://dvfbawegmhb2c"
 path="res://.godot/imported/snare_default.mp3-c38c7d926d1cc5917c6c6d4f6273295d.mp3str"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/snare_default.mp3-c38c7d926d1cc5917c6c6d4f627
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
