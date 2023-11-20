@@ -1,5 +1,6 @@
 extends Node2D
 
+var free_play = 0
 var score = 0
 #@export var hitPoints = 10
 var comboMultiplier = 1
@@ -15,7 +16,7 @@ var fase_atual = 1
 @export var baiao_01_caixa = [13.5, 15.5, 28.5, 29.5, 30.5, 31.5, 44.5, 45.5, 46.5, 47.25]
 
 func _ready():
-	var free_play = Singletons.free_play
+	free_play = Singletons.free_play
 	if(free_play == 1):
 		$Conductor.pauseTimer()
 		$HUD.hide()
@@ -43,9 +44,7 @@ func _on_bumbo_pressed():
 	$Buttons/bumboSound.play()
 	if(bumboHit):
 		update_score(10)
-		print('acertou')
 	else:
-		print('errou')
 		if(score > score_minimo):
 			update_score(-10)
 	
@@ -53,9 +52,7 @@ func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
 	if(caixaHit):
 		update_score(10)
-		print('acertou')
 	else:
-		print('errou')
 		if(score > score_minimo):
 			update_score(-10)
 		
@@ -70,6 +67,7 @@ func _input(event): #Tocar com as Setas do Teclado
 func _on_conductor_beat(beat):
 	beat_atual = beat
 	test_nota()
+	#prints(beat, posicaoBumbo, posicaoCaixa)
 
 func update_score(hitPoints):
 	score += hitPoints * comboMultiplier
@@ -128,3 +126,12 @@ func _on_menu_feedback_retry():
 		3: restart_fase_selecionada(160, 22.02, 33, 10, 6)
 	$MenuFeedback.scale = Vector2(0,0)
 
+func _on_pause_pressed():
+	$HUD.hide()
+	$MenuPause.scale = Vector2(1,1)
+	$Conductor.pauseTimer()
+
+func _on_menu_pause_continuar():
+	$MenuPause.scale = Vector2(0,0)
+	if(free_play == 0):
+		_on_menu_feedback_retry()
