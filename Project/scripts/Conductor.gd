@@ -42,3 +42,16 @@ func pauseTimer():
 
 func failSound():
 	$Fail.play()
+
+func sectionCompleteSound():
+	$SectionComplete.play()
+
+func sectionCompletePerfectSound():
+	$SectionCompletePerfect.play()
+
+func songCompleteSound():
+	$SongComplete.play()
+
+func songCompletePerfectSound():
+	$SongCompletePerfect.play()
+

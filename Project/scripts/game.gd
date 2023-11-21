@@ -46,7 +46,7 @@ func _on_bumbo_pressed():
 		update_score(10)
 	else:
 		if(score > score_minimo):
-			update_score(-10)
+			update_score(-5)
 	
 func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
@@ -54,7 +54,7 @@ func _on_caixa_pressed():
 		update_score(10)
 	else:
 		if(score > score_minimo):
-			update_score(-10)
+			update_score(-5)
 		
 	
 func _input(event): #Tocar com as Setas do Teclado
@@ -74,24 +74,34 @@ func update_score(hitPoints):
 	$HUD.update_score(score)
 
 func _on_conductor_baiao_01_finished():
-	if(score < 70):
+	if(score < 35):
 		abrir_menu_derrota()
 	else:
-		score_minimo = 70
+		if (score == 70):
+			$Conductor.sectionCompletePerfectSound()
+			comboMultiplier += 1
+		else:
+			$Conductor.sectionCompleteSound()
+		score_minimo = 35
 		fase_atual = 2
 
 func _on_conductor_baiao_02_finished():
-	if(score < 160):
+	if(score < 80):
 		abrir_menu_derrota()
 	else:
-		score_minimo = 160
+		if (score == 250):
+			$Conductor.sectionCompletePerfectSound()
+			comboMultiplier += 1
+		else:
+			$Conductor.sectionCompleteSound()
+		score_minimo = 80
 		fase_atual = 3
 
 func _on_conductor_baiao_03_finished():
-	if(score < 270):
+	if(score < 135):
 		abrir_menu_derrota()
 	else:
-		score_minimo = 270
+		score_minimo = 135
 		abrir_menu_vitoria()
 
 func abrir_menu_derrota():
@@ -108,7 +118,10 @@ func abrir_menu_vitoria():
 	$MenuFeedback/TextureRect/VBoxContainer/VBoxContainer/Retry.hide()
 	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
-	#Conductor.SOM DA VITORIA!!!
+	if (score == 580):
+		$Conductor.songCompletePerfectSound()
+	else:
+		$Conductor.songCompleteSound()
 	$Conductor.pauseTimer()
 
 func restart_fase_selecionada(faseScore, faseTempo, faseBeat, posBumbo, posCaixa):
@@ -122,8 +135,8 @@ func restart_fase_selecionada(faseScore, faseTempo, faseBeat, posBumbo, posCaixa
 func _on_menu_feedback_retry():
 	match fase_atual:
 		1: restart_fase_selecionada(0, 0, 0, 0, 0)
-		2: restart_fase_selecionada(70, 11.34, 17, 5, 2)
-		3: restart_fase_selecionada(160, 22.02, 33, 10, 6)
+		2: restart_fase_selecionada(35, 11.34, 17, 5, 2)
+		3: restart_fase_selecionada(80, 22.02, 33, 10, 6)
 	$MenuFeedback.scale = Vector2(0,0)
 
 func _on_pause_pressed():
