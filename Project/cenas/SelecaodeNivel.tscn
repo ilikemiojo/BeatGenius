@@ -50,22 +50,37 @@ size_flags_horizontal = 4
 
 [node name="Nivel01" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 5
 theme_override_font_sizes/font_size = 32
-text = "Nível 1: Baião"
+text = "   Nível 1: Baião"
+alignment = 0
 
 [node name="Nivel02" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 5
 theme_override_font_sizes/font_size = 32
-text = "Nível 2: Em Breve"
+text = "   Nível 2: em breve"
+alignment = 0
 
 [node name="Nivel03" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 5
 theme_override_font_sizes/font_size = 32
-text = "   Nível 3: Em Breve   "
+text = "   Nível 3: em breve   "
+alignment = 0
 
-[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Nivel01" to="." method="_on_iniciar_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Nivel02" to="." method="_on_free_play_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Nivel03" to="." method="_on_sair_pressed"]
+[node name="EmptySpace2" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Retornar ao Menu"
+
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Nivel01" to="." method="_on_nivel_01_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Nivel02" to="." method="_on_nivel_02_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Nivel03" to="." method="_on_nivel_03_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
