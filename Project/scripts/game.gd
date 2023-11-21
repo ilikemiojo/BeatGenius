@@ -105,17 +105,17 @@ func _on_conductor_baiao_03_finished():
 		abrir_menu_vitoria()
 
 func abrir_menu_derrota():
-	$MenuFeedback/TextureRect/VBoxContainer/Feedback.text = 'Você Perdeu!'
-	$MenuFeedback/TextureRect/VBoxContainer/Pontuacao.text = str(score)+' pts'
+	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você Perdeu!'
+	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = str(score)+' pts'
 	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
 	$Conductor.failSound()
 	$Conductor.pauseTimer()
 
 func abrir_menu_vitoria():
-	$MenuFeedback/TextureRect/VBoxContainer/Feedback.text = 'Você Venceu!'
-	$MenuFeedback/TextureRect/VBoxContainer/Pontuacao.text = str(score)+' pts'
-	$MenuFeedback/TextureRect/VBoxContainer/VBoxContainer/Retry.hide()
+	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você Venceu!'
+	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = str(score)+' pts'
+	$MenuFeedback/Background/VBoxContainer/VBoxContainer/Retry.hide()
 	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
 	if (score == 580):

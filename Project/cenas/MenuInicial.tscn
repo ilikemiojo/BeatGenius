@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dep5eo4f2hu0p"]
+[gd_scene load_steps=2 format=3 uid="uid://dep5eo4f2hu0p"]
 
-[ext_resource type="Texture2D" uid="uid://4jlc885lbnx3" path="res://fontes/parallax-space-backgound.png" id="1_li81j"]
 [ext_resource type="Script" path="res://scripts/MenuInicial.gd" id="1_rjhlc"]
 
 [node name="MenuInicial" type="Control"]
@@ -12,48 +11,61 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rjhlc")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1024, 576)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_li81j")
+color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+custom_minimum_size = Vector2(1024, 576)
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 576.0
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="Title" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 200)
-layout_mode = 2
-text = "BeatGenius"
+theme_override_font_sizes/font_size = 64
+text = "Beat Genius"
 horizontal_alignment = 1
-autowrap_mode = 3
+vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="EmptySpace" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "
 
-[node name="Iniciar" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Iniciar" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_font_sizes/font_size = 32
 text = "Iniciar"
 
-[node name="Free Play" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+[node name="Free Play" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Free Play"
+size_flags_horizontal = 5
+theme_override_font_sizes/font_size = 32
+text = "     Free Play     "
 
-[node name="Sair" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+[node name="Sair" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 5
+theme_override_font_sizes/font_size = 32
 text = "Sair"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Free Play" to="." method="_on_free_play_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Free Play" to="." method="_on_free_play_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]

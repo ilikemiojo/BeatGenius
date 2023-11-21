@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://1uxefrws8xtj"]
+[gd_scene load_steps=2 format=3 uid="uid://1uxefrws8xtj"]
 
-[ext_resource type="Texture2D" uid="uid://4jlc885lbnx3" path="res://fontes/parallax-space-backgound.png" id="1_guw6n"]
-[ext_resource type="Script" path="res://cenas/menu_pause.gd" id="1_ktqr6"]
+[ext_resource type="Script" path="res://scripts/menu_pause.gd" id="1_4a3yv"]
 
 [node name="menu_pause" type="Control"]
 layout_mode = 3
@@ -10,9 +9,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ktqr6")
+script = ExtResource("1_4a3yv")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1024, 576)
 layout_mode = 1
 anchors_preset = 15
@@ -20,33 +19,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_guw6n")
+color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 custom_minimum_size = Vector2(1024, 576)
 layout_mode = 0
 offset_right = 1024.0
 offset_bottom = 576.0
 alignment = 1
 
-[node name="PauseLabel" type="Label" parent="TextureRect/VBoxContainer"]
+[node name="PauseLabel" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 48
 text = "Jogo Pausado"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/VBoxContainer"]
+[node name="EmptySpace" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Continuar" type="Button" parent="TextureRect/VBoxContainer/VBoxContainer"]
+[node name="Continuar" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Continuar"
 
-[node name="Menu" type="Button" parent="TextureRect/VBoxContainer/VBoxContainer"]
+[node name="Menu" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Retornar ao Menu"
+theme_override_font_sizes/font_size = 32
+text = "   Retornar ao Menu   "
 
-[connection signal="pressed" from="TextureRect/VBoxContainer/VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]
-[connection signal="pressed" from="TextureRect/VBoxContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
