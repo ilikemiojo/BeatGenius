@@ -122,6 +122,8 @@ func abrir_menu_vitoria():
 		$Conductor.songCompletePerfectSound()
 	else:
 		$Conductor.songCompleteSound()
+	if (score > Singletons.highscore):
+		Singletons.highscore = score
 	$Conductor.pauseTimer()
 
 func restart_fase_selecionada(faseScore, faseTempo, faseBeat, posBumbo, posCaixa):

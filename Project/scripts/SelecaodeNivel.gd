@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_info.text = '   Recorde: ' + str(Singletons.highscore)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
