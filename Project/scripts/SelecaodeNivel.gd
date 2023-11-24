@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_nivel_01_pressed():
+	Singletons.level = 1
 	get_tree().change_scene_to_file("res://cenas/game.tscn")
 
 
