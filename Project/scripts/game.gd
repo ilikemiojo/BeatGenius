@@ -9,7 +9,6 @@ var caixaHit = false
 var beat_atual = 0
 var posicaoBumbo = 0
 var posicaoCaixa = 0
-var score_minimo = 0
 var fase_atual = 1
 var sectionNotes = 0
 var sectionNotesHit = 0
@@ -36,6 +35,7 @@ func test_nota():
 			bumboHit = true
 			sectionNotes += 1
 			posicaoBumbo += 1
+			prints(sectionNotes)
 			
 	if(posicaoCaixa < baiao_01_caixa.size()):
 		if(beat_atual == baiao_01_caixa[posicaoCaixa]):
@@ -43,31 +43,33 @@ func test_nota():
 			caixaHit = true
 			sectionNotes += 1
 			posicaoCaixa += 1
+			prints(sectionNotes)
 
 func _on_bumbo_pressed():
 	$Buttons/bumboSound.play()
 	if(bumboHit):
-		sectionNotes += 1
+		sectionNotesHit += 1
 		update_score(10)
 	else:
-		if(score > score_minimo):
-			update_score(-5)
+		update_score(-5)
+		if (comboMultiplier > 1):
+			comboMultiplier = 1
 	
 func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
 	if(caixaHit):
-		sectionNotes += 1
+		sectionNotesHit += 1
 		update_score(10)
 	else:
-		if(score > score_minimo):
-			update_score(-5)
-		
+		update_score(-5)
+		if (comboMultiplier > 1):
+			comboMultiplier = 1
 	
 func _input(event): #Tocar com as Setas do Teclado
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_LEFT:
+		if event.pressed and (event.keycode == KEY_LEFT or event.keycode == KEY_S):
 			_on_caixa_pressed() # (<-) = Caixa
-		if event.pressed and event.keycode == KEY_RIGHT:
+		if event.pressed and (event.keycode == KEY_RIGHT or event.keycode == KEY_K):
 			_on_bumbo_pressed() # (->) = Bumbo
 
 func _on_conductor_beat(beat):
@@ -111,16 +113,16 @@ func update_score(hitPoints):
 #		abrir_menu_vitoria()
 
 func abrir_menu_derrota():
-	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você Perdeu!'
-	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = str(score)+' pts'
+	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você perdeu!'
+	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Pontuação: ' + str(score)
 	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
 	$Conductor.failSound()
 	$Conductor.pauseTimer()
 
 func abrir_menu_vitoria():
-	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você Venceu!'
-	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = str(score)+' pts'
+	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você venceu!'
+	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Pontuação: ' + str(score)
 	$MenuFeedback/Background/VBoxContainer/VBoxContainer/Retry.hide()
 	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
