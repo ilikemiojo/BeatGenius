@@ -22,10 +22,11 @@ func _ready():
 	$Song.play()
 
 func _physics_process(delta):
-	song_position = $Song.get_playback_position() + AudioServer.get_time_since_last_mix()
-	song_position -= AudioServer.get_output_latency()
-	beat_atual = int(floor(song_position / sec_per_beat))
-	report_beat()
+	if (Singletons.free_play == 0):
+		song_position = $Song.get_playback_position() + AudioServer.get_time_since_last_mix()
+		song_position -= AudioServer.get_output_latency()
+		beat_atual = int(floor(song_position / sec_per_beat))
+		report_beat()
 
 func report_beat():
 	if (last_reported_beat < beat_atual):
