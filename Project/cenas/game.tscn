@@ -84,7 +84,6 @@ scale = Vector2(1e-05, 1e-05)
 [connection signal="baiao_02_finished" from="Conductor" to="." method="_on_conductor_baiao_02_finished"]
 [connection signal="baiao_03_finished" from="Conductor" to="." method="_on_conductor_baiao_03_finished"]
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
-[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
 [connection signal="section_finished" from="Conductor" to="." method="_on_conductor_section_finished"]
 [connection signal="song_finished" from="Conductor" to="." method="_on_conductor_song_finished"]
 [connection signal="retry" from="MenuFeedback" to="." method="_on_menu_feedback_retry"]

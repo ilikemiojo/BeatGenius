@@ -15,6 +15,10 @@ run/main_scene="res://cenas/MenuInicial.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/output_latency=5
+
 [autoload]
 
 Singletons="*res://scripts/singletons.gd"
