@@ -8,21 +8,23 @@ var caixaHit = false
 var beat_atual = 0
 var posicaoBumbo = 0
 var posicaoCaixa = 0
-var fase_atual = 1
+var savedPosicaoBumbo = 0
+var savedPosicaoCaixa = 0
+var fase_atual = 0
 var sectionNotes = 0
 var sectionNotesHit = 0
 
-@export var baiao_01_bumbo = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
-@export var baiao_01_caixa = [54,62,114,118,122,126,178,182,186,189]
-
 var totalHits = 0
-var totalNotes = baiao_01_bumbo.size() + baiao_01_caixa.size();
+var totalNotes = 0
+var savedScore = 0
 
 func _ready():
 	free_play = Singletons.free_play
 	if(free_play == 1):
 		$Conductor.pauseTimer()
 		$HUD.hide()
+	else:
+		totalNotes = $Conductor.bumboTimings.size() + $Conductor.caixaTimings.size();
 	$Nota.hide()
 	$HUD.update_score(score)
 	$MenuFeedback.scale = Vector2(0,0)
@@ -62,16 +64,16 @@ func test_nota():
 	bumboHit = false
 	caixaHit = false
 	$Nota.hide()
-	if(posicaoBumbo < baiao_01_bumbo.size()):
-		if(beat_atual == baiao_01_bumbo[posicaoBumbo]):
+	if(posicaoBumbo < $Conductor.bumboTimings.size()):
+		if(beat_atual == $Conductor.bumboTimings[posicaoBumbo]):
 			$Nota.show()
 			bumboHit = true
 			sectionNotes += 1
 			posicaoBumbo += 1
 			#prints(sectionNotes)
 			
-	if(posicaoCaixa < baiao_01_caixa.size()):
-		if(beat_atual == baiao_01_caixa[posicaoCaixa]):
+	if(posicaoCaixa < $Conductor.caixaTimings.size()):
+		if(beat_atual == $Conductor.caixaTimings[posicaoCaixa]):
 			$Nota.show()
 			caixaHit = true
 			sectionNotes += 1
@@ -115,19 +117,16 @@ func abrir_menu_vitoria():
 		Singletons.highscore = score
 	$Conductor.pauseTimer()
 
-func restart_fase_selecionada(faseScore, faseTempo, faseBeat, posBumbo, posCaixa):
-	posicaoBumbo = posBumbo
-	posicaoCaixa = posCaixa
-	score = faseScore
+func restart_fase_selecionada(fase):
+	posicaoBumbo = savedPosicaoBumbo
+	posicaoCaixa = savedPosicaoCaixa
+	score = savedScore
 	$HUD.show()
 	$HUD.update_score(score)
-	$Conductor.restart(faseTempo, faseBeat)
+	$Conductor.restart($Conductor.sectionsStartTime[fase], $Conductor.sectionsRestartBeat[fase])
 	
 func _on_menu_feedback_retry():
-	match fase_atual:
-		1: restart_fase_selecionada(0, 0, 0, 0, 0)
-		2: restart_fase_selecionada(35, 11.34, 68, 5, 2)
-		3: restart_fase_selecionada(80, 22.02, 132, 10, 6)
+	restart_fase_selecionada(fase_atual)
 	$MenuFeedback.scale = Vector2(0,0)
 
 func _on_conductor_section_finished():
@@ -140,13 +139,18 @@ func _on_conductor_section_finished():
 		$Conductor.nextSection();
 		comboMultiplier += 1
 		fase_atual += 1
+		savedPosicaoBumbo = posicaoBumbo
+		savedPosicaoCaixa = posicaoCaixa
 	else:
 		# Passou
 		$Conductor.sectionCompleteSound()
 		$Conductor.nextSection();
 		fase_atual += 1
+		savedPosicaoBumbo = posicaoBumbo
+		savedPosicaoCaixa = posicaoCaixa
 	sectionNotes = 0
 	sectionNotesHit = 0
+	savedScore = score
 
 func _on_conductor_song_finished():
 	if (sectionNotesHit < (sectionNotes/2)):

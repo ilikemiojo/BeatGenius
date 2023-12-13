@@ -64,6 +64,14 @@ text = "   Recorde: 000   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Nivel01_perfect" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "&"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -74,8 +82,18 @@ text = "   Nível 2: em breve   "
 alignment = 0
 
 [node name="Nivel02_info" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer2"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+text = "   Recorde: 000   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nivel02_perfect" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "&"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -89,8 +107,18 @@ text = "   Nível 3: em breve   "
 alignment = 0
 
 [node name="Nivel03_info" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer3"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+text = "   Recorde: 000   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nivel03_perfect" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer3"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "&"
 horizontal_alignment = 1
 vertical_alignment = 1
 
