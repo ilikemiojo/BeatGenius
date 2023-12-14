@@ -42,6 +42,7 @@ func report_beat():
 			emit_signal("section_finished")
 	elif (section_atual == sectionsLastBeat.size()):
 		emit_signal("song_finished")
+		section_atual = 0
 
 func nextSection():
 	section_atual += 1

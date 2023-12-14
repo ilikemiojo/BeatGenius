@@ -98,6 +98,10 @@ func abrir_menu_derrota():
 	$Conductor.pauseTimer()
 
 func abrir_menu_vitoria():
+	if (score == 580):
+		$Conductor.songCompletePerfectSound()
+	else:
+		$Conductor.songCompleteSound()
 	var div = round((float(totalHits)/totalNotes)*100)
 	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você venceu!'
 	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Pontuação: ' + str(score)
@@ -106,10 +110,6 @@ func abrir_menu_vitoria():
 	$MenuFeedback/Background/VBoxContainer/VBoxContainer/Retry.hide()
 	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
-	if (score == 580):
-		$Conductor.songCompletePerfectSound()
-	else:
-		$Conductor.songCompleteSound()
 		
 	if (score > Singletons.highscore[Singletons.level - 1]):
 		Singletons.highscore[Singletons.level - 1] = score
@@ -121,11 +121,10 @@ func restart_fase_selecionada(fase):
 	score = savedScore
 	sectionNotes = 0
 	sectionNotesHit = 0
+	comboMultiplier = 1
 	$HUD.show()
 	$HUD.update_score(score)
 	$Conductor.restart(fase_atual, $Conductor.sectionsStartTime[fase], $Conductor.sectionsRestartBeat[fase])
-	print($Conductor.sectionsStartTime[fase])
-	print($Conductor.sectionsRestartBeat[fase])
 	
 	
 func _on_menu_feedback_retry():
@@ -176,10 +175,23 @@ func _on_menu_pause_continuar():
 
 func _on_menu_pause_restart():
 	$MenuPause.scale = Vector2(0,0)
-	$Conductor.section_atual = fase_atual
+	$Conductor.section_atual = 0
 	fase_atual = 0
 	savedScore = 0
 	savedPosicaoBumbo = 0
 	savedPosicaoCaixa = 0
 	totalHits = 0
+	comboMultiplier = 1
+	restart_fase_selecionada(fase_atual)
+
+
+func _on_menu_feedback_restart():
+	$MenuFeedback.scale = Vector2(0,0)
+	$Conductor.section_atual = 0
+	fase_atual = 0
+	savedScore = 0
+	savedPosicaoBumbo = 0
+	savedPosicaoCaixa = 0
+	totalHits = 0
+	comboMultiplier = 1
 	restart_fase_selecionada(fase_atual)

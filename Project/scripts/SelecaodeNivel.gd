@@ -4,8 +4,8 @@ extends Control
 func _ready():
 	$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_perfect.hide()
 	
-	$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_info.text = '   Recorde: ' + str(Singletons.highscore[Singletons.level-1])
-	if(Singletons.highscore[0] == 580):
+	$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_info.text = '   Recorde: ' + str(Singletons.highscore[0])
+	if(Singletons.highscore[0] == Singletons.maxscore[0]):
 		$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_perfect.show()
 
 

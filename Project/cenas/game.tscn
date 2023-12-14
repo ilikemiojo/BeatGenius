@@ -86,6 +86,7 @@ scale = Vector2(1e-05, 1e-05)
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="section_finished" from="Conductor" to="." method="_on_conductor_section_finished"]
 [connection signal="song_finished" from="Conductor" to="." method="_on_conductor_song_finished"]
+[connection signal="restart" from="MenuFeedback" to="." method="_on_menu_feedback_restart"]
 [connection signal="retry" from="MenuFeedback" to="." method="_on_menu_feedback_retry"]
 [connection signal="continuar" from="MenuPause" to="." method="_on_menu_pause_continuar"]
 [connection signal="restart" from="MenuPause" to="." method="_on_menu_pause_restart"]
