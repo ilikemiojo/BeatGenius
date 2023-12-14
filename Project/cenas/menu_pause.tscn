@@ -50,10 +50,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Continuar"
 
+[node name="Restart" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
 [node name="Menu" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "   Retornar ao Menu   "
 
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

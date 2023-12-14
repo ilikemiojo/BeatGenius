@@ -42,6 +42,20 @@ text = "999 pts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Acertos" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "x/x acertos (xx%)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Minimo" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Mínimo x acertos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="EmptySpace" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48

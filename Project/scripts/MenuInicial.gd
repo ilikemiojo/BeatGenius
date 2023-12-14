@@ -10,3 +10,7 @@ func _on_sair_pressed():
 func _on_free_play_pressed():
 	Singletons.free_play = 1
 	get_tree().change_scene_to_file("res://cenas/game.tscn")
+
+
+func _on_creditos_pressed():
+	get_tree().change_scene_to_file("res://cenas/Creditos.tscn")

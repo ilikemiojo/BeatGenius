@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw4v4mcx4alcl"]
+
+[ext_resource type="Script" path="res://scripts/Creditos.gd" id="1_oic4a"]
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oic4a")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1024, 576)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+custom_minimum_size = Vector2(1024, 576)
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 576.0
+alignment = 1
+
+[node name="Title" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmptySpace" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="DaviDuarte" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Davi Duarte"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Funcao" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmptySpace2" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DaviFausto" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Davi Fausto"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Funcao2" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmptySpace3" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MauricioRamalho" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Maurício Ramalho"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Funcao3" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Design and Sound Design"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmptySpace" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Voltar" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_font_sizes/font_size = 32
+text = "Voltar ao Menu Principal"
+
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Voltar" to="." method="_on_voltar_pressed"]

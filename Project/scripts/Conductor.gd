@@ -1,44 +1,62 @@
 extends AudioStreamPlayer
 
-var bpm := 90
+var bpm := 90*4
+var sectionsLastBeat
+var sectionsRestartBeat
+var sectionsStartTime
+var bumboTimings
+var caixaTimings
 
 var song_position = 0.0
 var sec_per_beat = 60.0 / bpm
-var beats_before_start = 0
+var section_atual = 0
 var beat_atual = 0
+var last_reported_beat = 0
 
 signal beat()
 signal baiao_01_finished()
 signal baiao_02_finished()
 signal baiao_03_finished()
+signal section_finished()
+signal song_finished()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Baiao.play()
+	levelSetup()
+	$Song.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	if (Singletons.free_play == 0):
+		song_position = $Song.get_playback_position() + AudioServer.get_time_since_last_mix()
+		song_position -= AudioServer.get_output_latency()
+		beat_atual = int(floor(song_position / sec_per_beat))
+		report_beat()
 
-func _on_timer_timeout():
-	beat_atual += 0.25
-	emit_signal("beat", beat_atual)
-	if(beat_atual == 17):
-		emit_signal("baiao_01_finished")
-	if(beat_atual == 33):
-		emit_signal("baiao_02_finished")
-	if(beat_atual == 49):
-		emit_signal("baiao_03_finished")
+func report_beat():
+	if (last_reported_beat < beat_atual):
+		emit_signal("beat", beat_atual)
+		last_reported_beat = beat_atual
+		
+	if (section_atual < sectionsLastBeat.size()):
+		if (beat_atual == sectionsLastBeat[section_atual]):
+			emit_signal("section_finished")
+	elif (section_atual == sectionsLastBeat.size()):
+		emit_signal("song_finished")
 
-func restart(position, beat):
+func nextSection():
+	section_atual += 1
+
+func restart(section, position, beat):
 	$Timer.stop()
+	section_atual = section
 	beat_atual = beat
-	$Baiao.play(position)
+	last_reported_beat = beat
+	$Song.play(position)
 	$Timer.start()
 	
 func pauseTimer():
 	$Timer.stop()
-	$Baiao.stop()
+	$Song.stop()
 
 func failSound():
 	$Fail.play()
@@ -55,3 +73,27 @@ func songCompleteSound():
 func songCompletePerfectSound():
 	$SongCompletePerfect.play()
 
+func levelSetup():
+	match Singletons.level:
+		1:
+			$Song.stream = load("res://audio/baiao.mp3")
+			bpm = 90*4
+			sectionsLastBeat = [68,132,196]
+			sectionsRestartBeat = [0, 68, 132]
+			sectionsStartTime = [0, 10.74, 21.43]
+			bumboTimings = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
+			caixaTimings = [54,62,114,118,122,126,178,182,186,189]
+		2:
+			$Song.stream = load("res://audio/baiao.mp3")
+			bpm = 90*4
+			sectionsLastBeat = [68,132,196]
+			sectionsStartTime = [0, 11.34, 22.02]
+			#bumboTimings = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
+			#caixaTimings = [54,62,114,118,122,126,178,182,186,189]
+		3:
+			$Song.stream = load("res://audio/baiao.mp3")
+			bpm = 90*4
+			sectionsLastBeat = [68,132,196]
+			sectionsStartTime = [0, 11.34, 22.02]
+			#bumboTimings = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
+			#caixaTimings = [54,62,114,118,122,126,178,182,186,189]
