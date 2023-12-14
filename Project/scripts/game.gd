@@ -33,7 +33,6 @@ func _on_bumbo_pressed():
 	$Buttons/bumboSound.play()
 	if(bumboHit):
 		sectionNotesHit += 1
-		totalHits += 1
 		update_score(10)
 	else:
 		if(score > 0):
@@ -45,7 +44,6 @@ func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
 	if(caixaHit):
 		sectionNotesHit += 1
-		totalHits += 1
 		update_score(10)
 	else:
 		if(score > 0):
@@ -90,7 +88,6 @@ func update_score(hitPoints):
 
 func abrir_menu_derrota():
 	var div = round((float(sectionNotesHit)/sectionNotes)*100)
-	totalHits -= sectionNotesHit
 	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você perdeu!'
 	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Pontuação: ' + str(score)
 	$MenuFeedback/Background/VBoxContainer/Acertos.text = str(sectionNotesHit)+'/'+str(sectionNotes)+' acertos ('+str(div)+'%)'
@@ -122,14 +119,11 @@ func restart_fase_selecionada(fase):
 	posicaoBumbo = savedPosicaoBumbo
 	posicaoCaixa = savedPosicaoCaixa
 	score = savedScore
+	sectionNotes = 0
+	sectionNotesHit = 0
 	$HUD.show()
 	$HUD.update_score(score)
 	$Conductor.restart(fase_atual, $Conductor.sectionsStartTime[fase], $Conductor.sectionsRestartBeat[fase])
-	print('---------------------------')
-	print('posBubmo' ,posicaoBumbo)
-	print('posCaixa' ,posicaoCaixa)
-	print('score' ,score)
-	print('section_atual ', $Conductor.section_atual)
 	print($Conductor.sectionsStartTime[fase])
 	print($Conductor.sectionsRestartBeat[fase])
 	
@@ -146,6 +140,7 @@ func _on_conductor_section_finished():
 		# Perfect
 		$Conductor.sectionCompletePerfectSound()
 		$Conductor.nextSection();
+		totalHits += sectionNotesHit
 		comboMultiplier += 1
 		fase_atual += 1
 		savedPosicaoBumbo = posicaoBumbo
@@ -155,6 +150,7 @@ func _on_conductor_section_finished():
 		# Passou
 		$Conductor.sectionCompleteSound()
 		$Conductor.nextSection();
+		totalHits += sectionNotesHit
 		fase_atual += 1
 		savedPosicaoBumbo = posicaoBumbo
 		savedPosicaoCaixa = posicaoCaixa
@@ -185,4 +181,5 @@ func _on_menu_pause_restart():
 	savedScore = 0
 	savedPosicaoBumbo = 0
 	savedPosicaoCaixa = 0
+	totalHits = 0
 	restart_fase_selecionada(fase_atual)
