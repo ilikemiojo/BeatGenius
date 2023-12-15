@@ -13,7 +13,10 @@ func _ready():
 func _on_nivel_01_pressed():
 	Singletons.level = 1
 	Singletons.free_play = 0
-	get_tree().change_scene_to_file("res://cenas/game.tscn")
+	if (Singletons.showTutorial):
+		get_tree().change_scene_to_file("res://cenas/Tutorial.tscn")
+	else:
+		get_tree().change_scene_to_file("res://cenas/game.tscn")
 
 
 func _on_nivel_02_pressed():

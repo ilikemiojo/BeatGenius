@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://bghc58a1fgkwh"]
+
+[ext_resource type="Script" path="res://scripts/Tutorial.gd" id="1_32cwd"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_32cwd")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1024, 576)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+custom_minimum_size = Vector2(1024, 576)
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 576.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Como Jogar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info_01" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Ouça o ritmo apresentado
+Aguarde a sua vez
+Reproduza o ritmo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmptySpace3" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="Background/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Controles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info_01" type="Label" parent="Background/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Pressione K para tocar o Bumbo
+Pressione S para tocar a Caixa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="EmptySpace2" type="Label" parent="Background/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Entendi" type="Button" parent="Background/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "   Entendi!   "
+
+[connection signal="pressed" from="Background/VBoxContainer/VBoxContainer3/Entendi" to="." method="_on_entendi_pressed"]
