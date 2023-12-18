@@ -16,7 +16,7 @@ stream = ExtResource("2_4fgaj")
 volume_db = 2.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.165
+wait_time = 0.166
 autostart = true
 
 [node name="Fail" type="AudioStreamPlayer" parent="."]

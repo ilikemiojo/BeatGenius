@@ -79,22 +79,25 @@ func levelSetup():
 		1:
 			$Song.stream = load("res://audio/baiao.mp3")
 			bpm = 90*4
+			$Timer.wait_time = 0.166
 			sectionsLastBeat = [68,132,196]
 			sectionsRestartBeat = [0, 68, 132]
-			sectionsStartTime = [0, 10.74, 21.43]
+			sectionsStartTime = [0, 10.67, 21.33]
 			bumboTimings = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
 			caixaTimings = [54,62,114,118,122,126,178,182,186,189]
 		2:
-			$Song.stream = load("res://audio/baiao.mp3")
+			$Song.stream = load("res://audio/xote.mp3")
 			bpm = 90*4
+			$Timer.wait_time = 0.166
 			sectionsLastBeat = [68,132,196]
-			sectionsStartTime = [0, 11.34, 22.02]
-			#bumboTimings = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
-			#caixaTimings = [54,62,114,118,122,126,178,182,186,189]
+			sectionsStartTime = [0, 10.67, 21.33]
+			bumboTimings = [48,52,54,56,60,62,64,112,116,118,120,124,126,128,176,179,180,182,184,187,188,190,192]
+			caixaTimings = [114,122,178,186,189]
 		3:
-			$Song.stream = load("res://audio/baiao.mp3")
-			bpm = 90*4
+			$Song.stream = load("res://audio/xaxado.mp3")
+			bpm = 120*4
+			$Timer.wait_time = 0.125
 			sectionsLastBeat = [68,132,196]
-			sectionsStartTime = [0, 11.34, 22.02]
-			#bumboTimings = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
-			#caixaTimings = [54,62,114,118,122,126,178,182,186,189]
+			sectionsStartTime = [0, 6, 14]
+			bumboTimings = [48,51,54,56,59,62,64,112,115,118,120,123,126,128,176,179,182,184,187,190,192]
+			caixaTimings = [116,124,177,180,183,185,188,191]
