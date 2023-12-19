@@ -90,6 +90,8 @@ func update_score(hitPoints):
 
 func abrir_menu_derrota():
 	var div = round((float(sectionNotesHit)/sectionNotes)*100)
+	$MenuFeedback/Background/VBoxContainer/Minimo.show()
+	$MenuFeedback/Background/VBoxContainer/VBoxContainer/Retry.show()
 	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você perdeu!'
 	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Pontuação: ' + str(score)
 	$MenuFeedback/Background/VBoxContainer/Acertos.text = str(sectionNotesHit)+'/'+str(sectionNotes)+' acertos ('+str(div)+'%)'
@@ -124,6 +126,7 @@ func restart_fase_selecionada(fase):
 	sectionNotes = 0
 	sectionNotesHit = 0
 	comboMultiplier = 1
+	$HUD.update_combo(comboMultiplier)
 	$HUD.show()
 	$HUD.update_score(score)
 	$Conductor.restart(fase_atual, $Conductor.sectionsStartTime[fase], $Conductor.sectionsRestartBeat[fase])
