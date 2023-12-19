@@ -6,6 +6,8 @@ var sectionsRestartBeat
 var sectionsStartTime
 var bumboTimings
 var caixaTimings
+var bumboDemoTimings
+var caixaDemoTimings
 
 var song_position = 0.0
 var section_atual = 0
@@ -82,6 +84,8 @@ func levelSetup():
 			sectionsLastBeat = [68,132,196]
 			sectionsRestartBeat = [0, 68, 132]
 			sectionsStartTime = [0, 10.67, 21.33]
+			bumboDemoTimings = [16,19,24,27,32,80,83,88,91,96,144,147,151,152,155,158,160]
+			caixaDemoTimings = [22,30,82,86,90,94,146,150,154,157]
 			bumboTimings = [48,51,56,59,64,112,115,120,123,128,176,179,183,184,187,190,192]
 			caixaTimings = [54,62,114,118,122,126,178,182,186,189]
 		2:
@@ -91,6 +95,8 @@ func levelSetup():
 			sectionsLastBeat = [68,132,196]
 			sectionsRestartBeat = [0, 68, 132]
 			sectionsStartTime = [0, 10.67, 21.33]
+			bumboDemoTimings = [16,20,22,24,28,30,32,80,84,86,88,92,94,96,144,147,148,150,152,155,156,158,160]
+			caixaDemoTimings = [82,90,146,154,157]
 			bumboTimings = [48,52,54,56,60,62,64,112,116,118,120,124,126,128,176,179,180,182,184,187,188,190,192]
 			caixaTimings = [114,122,178,186,189]
 		3:
@@ -100,5 +106,7 @@ func levelSetup():
 			sectionsLastBeat = [68,132,196]
 			sectionsRestartBeat = [0, 68, 132]
 			sectionsStartTime = [0, 8, 16]
+			bumboDemoTimings = [16,19,22,24,27,30,32,80,83,86,88,91,94,96,144,147,150,152,155,158,160]
+			caixaDemoTimings = [84,92,145,148,151,153,156,159]
 			bumboTimings = [48,51,54,56,59,62,64,112,115,118,120,123,126,128,176,179,182,184,187,190,192]
 			caixaTimings = [116,124,177,180,183,185,188,191]

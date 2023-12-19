@@ -8,8 +8,12 @@ var caixaHit = false
 var beat_atual = 0
 var posicaoBumbo = 0
 var posicaoCaixa = 0
+var posicaoBumboDemo = 0
+var posicaoCaixaDemo = 0
 var savedPosicaoBumbo = 0
 var savedPosicaoCaixa = 0
+var savedPosicaoBumboDemo = 0
+var savedPosicaoCaixaDemo = 0
 var fase_atual = 0
 var sectionNotes = 0
 var sectionNotesHit = 0
@@ -61,6 +65,17 @@ func _input(event): #Tocar com as Setas do Teclado
 		if event.pressed and (event.keycode == KEY_RIGHT or event.keycode == KEY_K):
 			_on_bumbo_pressed() # (->) = Bumbo
 
+func demo_notes():
+	if(posicaoBumboDemo < $Conductor.bumboDemoTimings.size()):
+		if(beat_atual == $Conductor.bumboDemoTimings[posicaoBumboDemo]):
+			$Buttons/Bumbo/AnimationPlayer.play("kick_note")
+			posicaoBumboDemo += 1
+		
+	if(posicaoCaixaDemo < $Conductor.caixaDemoTimings.size()):
+		if(beat_atual == $Conductor.caixaDemoTimings[posicaoCaixaDemo]):
+			$Buttons/Caixa/AnimationPlayer.play("snare_note")
+			posicaoCaixaDemo += 1
+
 func test_nota():
 	bumboHit = false
 	caixaHit = false
@@ -82,6 +97,7 @@ func test_nota():
 
 func _on_conductor_beat(beat):
 	beat_atual = beat
+	demo_notes()
 	test_nota()
 
 func update_score(hitPoints):
@@ -122,6 +138,8 @@ func abrir_menu_vitoria():
 func restart_fase_selecionada(fase):
 	posicaoBumbo = savedPosicaoBumbo
 	posicaoCaixa = savedPosicaoCaixa
+	posicaoBumboDemo = savedPosicaoBumboDemo
+	posicaoCaixaDemo = savedPosicaoCaixaDemo
 	score = savedScore
 	sectionNotes = 0
 	sectionNotesHit = 0
@@ -151,6 +169,8 @@ func _on_conductor_section_finished():
 		$HUD.update_section(fase_atual)
 		savedPosicaoBumbo = posicaoBumbo
 		savedPosicaoCaixa = posicaoCaixa
+		savedPosicaoBumboDemo = posicaoBumboDemo
+		savedPosicaoCaixaDemo = posicaoCaixaDemo
 		savedScore = score
 	else:
 		# Passou
@@ -161,6 +181,8 @@ func _on_conductor_section_finished():
 		$HUD.update_section(fase_atual)
 		savedPosicaoBumbo = posicaoBumbo
 		savedPosicaoCaixa = posicaoCaixa
+		savedPosicaoBumboDemo = posicaoBumboDemo
+		savedPosicaoCaixaDemo = posicaoCaixaDemo
 		savedScore = score
 	sectionNotes = 0
 	sectionNotesHit = 0
@@ -189,6 +211,8 @@ func _on_menu_pause_restart():
 	savedScore = 0
 	savedPosicaoBumbo = 0
 	savedPosicaoCaixa = 0
+	savedPosicaoBumboDemo = 0
+	savedPosicaoCaixaDemo = 0
 	totalHits = 0
 	comboMultiplier = 1
 	restart_fase_selecionada(fase_atual)
@@ -202,6 +226,8 @@ func _on_menu_feedback_restart():
 	savedScore = 0
 	savedPosicaoBumbo = 0
 	savedPosicaoCaixa = 0
+	savedPosicaoBumboDemo = 0
+	savedPosicaoCaixaDemo = 0
 	totalHits = 0
 	comboMultiplier = 1
 	restart_fase_selecionada(fase_atual)

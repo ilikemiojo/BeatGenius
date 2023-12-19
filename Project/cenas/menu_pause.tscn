@@ -31,7 +31,7 @@ alignment = 1
 [node name="PauseLabel" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Jogo Pausado"
+text = "Game Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -48,17 +48,17 @@ size_flags_horizontal = 4
 [node name="Continuar" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Continuar"
+text = "Continue"
 
 [node name="Restart" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Reiniciar"
+text = "Restart"
 
 [node name="Menu" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Retornar ao Menu   "
+text = "   Return to Main Menu   "
 
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

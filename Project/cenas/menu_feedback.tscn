@@ -70,17 +70,17 @@ size_flags_horizontal = 4
 [node name="Retry" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Tentar Novamente   "
+text = "   Try Again   "
 
 [node name="Restart" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Reiniciar"
+text = "Restart"
 
 [node name="Menu" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Retornar ao Menu"
+text = "   Return to Main Menu   "
 
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
