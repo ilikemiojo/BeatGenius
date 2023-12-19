@@ -8,7 +8,6 @@ var bumboTimings
 var caixaTimings
 
 var song_position = 0.0
-var sec_per_beat = 60.0 / bpm
 var section_atual = 0
 var beat_atual = 0
 var last_reported_beat = 0
@@ -29,7 +28,7 @@ func _physics_process(delta):
 	if (Singletons.free_play == 0):
 		song_position = $Song.get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
-		beat_atual = int(floor(song_position / sec_per_beat))
+		beat_atual = int(floor(song_position / $Timer.wait_time))
 		report_beat()
 
 func report_beat():
@@ -79,7 +78,7 @@ func levelSetup():
 		1:
 			$Song.stream = load("res://audio/baiao.mp3")
 			bpm = 90*4
-			$Timer.wait_time = 0.166
+			$Timer.wait_time = 60.0 / bpm
 			sectionsLastBeat = [68,132,196]
 			sectionsRestartBeat = [0, 68, 132]
 			sectionsStartTime = [0, 10.67, 21.33]
@@ -88,7 +87,7 @@ func levelSetup():
 		2:
 			$Song.stream = load("res://audio/xote.mp3")
 			bpm = 90*4
-			$Timer.wait_time = 0.166
+			$Timer.wait_time = 60.0 / bpm
 			sectionsLastBeat = [68,132,196]
 			sectionsStartTime = [0, 10.67, 21.33]
 			bumboTimings = [48,52,54,56,60,62,64,112,116,118,120,124,126,128,176,179,180,182,184,187,188,190,192]
@@ -96,7 +95,7 @@ func levelSetup():
 		3:
 			$Song.stream = load("res://audio/xaxado.mp3")
 			bpm = 120*4
-			$Timer.wait_time = 0.125
+			$Timer.wait_time = 60.0 / bpm
 			sectionsLastBeat = [68,132,196]
 			sectionsStartTime = [0, 6, 14]
 			bumboTimings = [48,51,54,56,59,62,64,112,115,118,120,123,126,128,176,179,182,184,187,190,192]

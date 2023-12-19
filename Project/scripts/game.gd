@@ -27,6 +27,7 @@ func _ready():
 		totalNotes = $Conductor.bumboTimings.size() + $Conductor.caixaTimings.size();
 	$Nota.hide()
 	$HUD.update_score(score)
+	$HUD.update_combo(comboMultiplier)
 	$MenuFeedback.scale = Vector2(0,0)
 
 func _on_bumbo_pressed():
@@ -39,6 +40,7 @@ func _on_bumbo_pressed():
 			update_score(-5)
 		if (comboMultiplier > 1):
 			comboMultiplier = 1
+			$HUD.update_combo(comboMultiplier)
 	
 func _on_caixa_pressed():
 	$Buttons/caixaSound.play()
@@ -50,6 +52,7 @@ func _on_caixa_pressed():
 			update_score(-5)
 		if (comboMultiplier > 1):
 			comboMultiplier = 1
+			$HUD.update_combo(comboMultiplier)
 	
 func _input(event): #Tocar com as Setas do Teclado
 	if event is InputEventKey:
@@ -61,10 +64,9 @@ func _input(event): #Tocar com as Setas do Teclado
 func test_nota():
 	bumboHit = false
 	caixaHit = false
-	$Nota.hide()
 	if(posicaoBumbo < $Conductor.bumboTimings.size()):
 		if(beat_atual == $Conductor.bumboTimings[posicaoBumbo]):
-			$Nota.show()
+			$Buttons/Bumbo/AnimationPlayer.play("kick_note")
 			bumboHit = true
 			sectionNotes += 1
 			posicaoBumbo += 1
@@ -72,7 +74,7 @@ func test_nota():
 			
 	if(posicaoCaixa < $Conductor.caixaTimings.size()):
 		if(beat_atual == $Conductor.caixaTimings[posicaoCaixa]):
-			$Nota.show()
+			$Buttons/Caixa/AnimationPlayer.play("snare_note")
 			caixaHit = true
 			sectionNotes += 1
 			posicaoCaixa += 1
@@ -141,6 +143,7 @@ func _on_conductor_section_finished():
 		$Conductor.nextSection();
 		totalHits += sectionNotesHit
 		comboMultiplier += 1
+		$HUD.update_combo(comboMultiplier)
 		fase_atual += 1
 		savedPosicaoBumbo = posicaoBumbo
 		savedPosicaoCaixa = posicaoCaixa
