@@ -148,6 +148,7 @@ func _on_conductor_section_finished():
 		comboMultiplier += 1
 		$HUD.update_combo(comboMultiplier)
 		fase_atual += 1
+		$HUD.update_section(fase_atual)
 		savedPosicaoBumbo = posicaoBumbo
 		savedPosicaoCaixa = posicaoCaixa
 		savedScore = score
@@ -157,6 +158,7 @@ func _on_conductor_section_finished():
 		$Conductor.nextSection();
 		totalHits += sectionNotesHit
 		fase_atual += 1
+		$HUD.update_section(fase_atual)
 		savedPosicaoBumbo = posicaoBumbo
 		savedPosicaoCaixa = posicaoCaixa
 		savedScore = score
@@ -183,6 +185,7 @@ func _on_menu_pause_restart():
 	$MenuPause.scale = Vector2(0,0)
 	$Conductor.section_atual = 0
 	fase_atual = 0
+	$HUD.update_section(fase_atual)
 	savedScore = 0
 	savedPosicaoBumbo = 0
 	savedPosicaoCaixa = 0
@@ -195,6 +198,7 @@ func _on_menu_feedback_restart():
 	$MenuFeedback.scale = Vector2(0,0)
 	$Conductor.section_atual = 0
 	fase_atual = 0
+	$HUD.update_section(fase_atual)
 	savedScore = 0
 	savedPosicaoBumbo = 0
 	savedPosicaoCaixa = 0

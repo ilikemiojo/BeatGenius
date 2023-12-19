@@ -54,13 +54,13 @@ layout_mode = 2
 [node name="Nivel01" type="Button" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Nível 1: Baião          "
+text = "   Level 1: Baião          "
 alignment = 0
 
 [node name="Nivel01_info" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Recorde: 000   "
+text = "   Highscore: 000   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -77,13 +77,13 @@ layout_mode = 2
 [node name="Nivel02" type="Button" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Nível 2: Xote          "
+text = "   Level 2: Xote          "
 alignment = 0
 
 [node name="Nivel02_info" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Recorde: 000   "
+text = "   Highscore: 000   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -100,13 +100,13 @@ layout_mode = 2
 [node name="Nivel03" type="Button" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Nível 3: Xaxado      "
+text = "   Level 3: Xaxado      "
 alignment = 0
 
 [node name="Nivel03_info" type="Label" parent="Background/VBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Recorde: 000   "
+text = "   Highscore: 000   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -129,7 +129,7 @@ vertical_alignment = 1
 [node name="Menu" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Retornar ao Menu"
+text = "Return to Main Menu"
 
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01" to="." method="_on_nivel_01_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/HBoxContainer2/Nivel02" to="." method="_on_nivel_02_pressed"]

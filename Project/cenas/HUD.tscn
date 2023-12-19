@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7veamggaxxs2"]
+[gd_scene load_steps=3 format=3 uid="uid://c7veamggaxxs2"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_rkot6"]
+[ext_resource type="Texture2D" uid="uid://dcnpkil02lv5a" path="res://sprites/iconHollow.png" id="2_fmlwo"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_rkot6")
@@ -22,3 +23,37 @@ offset_bottom = 126.0
 theme_override_font_sizes/font_size = 32
 text = "Combo: x2"
 vertical_alignment = 1
+
+[node name="SectionIcons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Section_1" type="Sprite2D" parent="SectionIcons"]
+position = Vector2(432, 50)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("2_fmlwo")
+
+[node name="Section_2" type="Sprite2D" parent="SectionIcons"]
+position = Vector2(512, 50)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("2_fmlwo")
+
+[node name="Section_3" type="Sprite2D" parent="SectionIcons"]
+position = Vector2(592, 50)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("2_fmlwo")
+
+[node name="Separators" type="Label" parent="SectionIcons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 438.0
+offset_top = 27.0
+offset_right = 546.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "-     -"

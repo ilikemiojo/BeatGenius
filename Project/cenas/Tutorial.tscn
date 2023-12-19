@@ -35,16 +35,16 @@ size_flags_horizontal = 4
 [node name="Title" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Como Jogar"
+text = "How to play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Info_01" type="Label" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Ouça o ritmo apresentado
-Aguarde a sua vez
-Reproduza o ritmo"
+text = "Listen to the presented rhythm
+Wait for your turn
+Play the rhythm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -61,15 +61,15 @@ size_flags_horizontal = 4
 [node name="Title" type="Label" parent="Background/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Controles"
+text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Info_01" type="Label" parent="Background/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Pressione K para tocar o Bumbo
-Pressione S para tocar a Caixa"
+text = "Press K to play the Kick
+Press S to play the Snare"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -86,6 +86,6 @@ vertical_alignment = 1
 [node name="Entendi" type="Button" parent="Background/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "   Entendi!   "
+text = "   Got it!   "
 
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer3/Entendi" to="." method="_on_entendi_pressed"]
