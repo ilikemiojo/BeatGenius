@@ -89,6 +89,7 @@ func levelSetup():
 			bpm = 90*4
 			$Timer.wait_time = 60.0 / bpm
 			sectionsLastBeat = [68,132,196]
+			sectionsRestartBeat = [0, 68, 132]
 			sectionsStartTime = [0, 10.67, 21.33]
 			bumboTimings = [48,52,54,56,60,62,64,112,116,118,120,124,126,128,176,179,180,182,184,187,188,190,192]
 			caixaTimings = [114,122,178,186,189]
@@ -97,6 +98,7 @@ func levelSetup():
 			bpm = 120*4
 			$Timer.wait_time = 60.0 / bpm
 			sectionsLastBeat = [68,132,196]
-			sectionsStartTime = [0, 6, 14]
+			sectionsRestartBeat = [0, 68, 132]
+			sectionsStartTime = [0, 8, 16]
 			bumboTimings = [48,51,54,56,59,62,64,112,115,118,120,123,126,128,176,179,182,184,187,190,192]
 			caixaTimings = [116,124,177,180,183,185,188,191]
