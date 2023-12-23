@@ -108,10 +108,10 @@ func abrir_menu_derrota():
 	var div = round((float(sectionNotesHit)/sectionNotes)*100)
 	$MenuFeedback/Background/VBoxContainer/Minimo.show()
 	$MenuFeedback/Background/VBoxContainer/VBoxContainer/Retry.show()
-	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você perdeu!'
-	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Pontuação: ' + str(score)
-	$MenuFeedback/Background/VBoxContainer/Acertos.text = str(sectionNotesHit)+'/'+str(sectionNotes)+' acertos ('+str(div)+'%)'
-	$MenuFeedback/Background/VBoxContainer/Minimo.text = 'Mínimo '+str(sectionNotes/2)+' acertos'
+	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'You lost!'
+	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Score: ' + str(score)
+	$MenuFeedback/Background/VBoxContainer/Acertos.text = str(sectionNotesHit)+'/'+str(sectionNotes)+' notes hit ('+str(div)+'%)'
+	$MenuFeedback/Background/VBoxContainer/Minimo.text = 'Minimum: '+str(sectionNotes/2)+' notes'
 	$HUD.hide()
 	$MenuFeedback.scale = Vector2(1,1)
 	$Conductor.failSound()
@@ -123,9 +123,9 @@ func abrir_menu_vitoria():
 	else:
 		$Conductor.songCompleteSound()
 	var div = round((float(totalHits)/totalNotes)*100)
-	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'Você venceu!'
-	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Pontuação: ' + str(score)
-	$MenuFeedback/Background/VBoxContainer/Acertos.text = str(totalHits)+'/'+str(totalNotes)+' acertos ('+str(div)+'%)'
+	$MenuFeedback/Background/VBoxContainer/Feedback.text = 'You won!'
+	$MenuFeedback/Background/VBoxContainer/Pontuacao.text = 'Score: ' + str(score)
+	$MenuFeedback/Background/VBoxContainer/Acertos.text = str(totalHits)+'/'+str(totalNotes)+' notes hit ('+str(div)+'%)'
 	$MenuFeedback/Background/VBoxContainer/Minimo.hide()
 	$MenuFeedback/Background/VBoxContainer/VBoxContainer/Retry.hide()
 	$HUD.hide()

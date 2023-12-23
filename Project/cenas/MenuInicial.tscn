@@ -52,7 +52,7 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 5
 theme_override_font_sizes/font_size = 32
-text = "Iniciar"
+text = "Play"
 
 [node name="Free Play" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -63,13 +63,13 @@ text = "     Free Play     "
 [node name="Creditos" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Créditos"
+text = "Credits"
 
 [node name="Sair" type="Button" parent="Background/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 theme_override_font_sizes/font_size = 32
-text = "Sair"
+text = "Quit"
 
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/VBoxContainer/Free Play" to="." method="_on_free_play_pressed"]
