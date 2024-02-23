@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cudo4sw54m1"]
+
+[ext_resource type="Script" path="res://cenas/informations.gd" id="1_r2b0a"]
+
+[node name="Informations" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r2b0a")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1024, 576)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+clip_contents = true
+layout_mode = 0
+offset_left = 24.0
+offset_right = 1000.0
+offset_bottom = 576.0
+alignment = 1
+
+[node name="Title" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Estilo Musical
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Baião is a northeastern musical rhythm, accompanied by dance, very popular in the Northeast and northern regions of Brazil.
+The baião is also a form of dance. Dancers usually dance in pairs, making synchronized movements that imitate the movements of a bird called a \"baião\", which gives the genre its name.
+It was in the second half of the 1940s that baião became popular, through musicians Luiz Gonzaga (known as the “king of baião”) and Humberto Teixeira (“the doctor of baião”).
+
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Close" type="Button" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[connection signal="pressed" from="Background/VBoxContainer/Close" to="." method="_on_close_pressed"]
