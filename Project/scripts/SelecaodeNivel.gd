@@ -17,7 +17,7 @@ func _ready():
 	$Background/VBoxContainer/VBoxContainer/HBoxContainer3/Nivel03_info.text = '   Recorde: ' + str(Singletons.highscore[2])
 	if(Singletons.highscore[2] == Singletons.maxscore[2]):
 		$Background/VBoxContainer/VBoxContainer/HBoxContainer3/Nivel03_perfect.show()
-	
+
 func selectLevel(level):
 	Singletons.level = level
 	Singletons.free_play = 0
@@ -37,3 +37,19 @@ func _on_nivel_03_pressed():
 
 func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://cenas/MenuInicial.tscn")
+
+
+func _on_info_button_01_pressed():
+	$Informations.scale = Vector2(1,1)
+	$Informations.show_baiao_info()
+
+func _on_info_button_02_pressed():
+	$Informations.scale = Vector2(1,1)
+	$Informations.show_xote_info()
+
+func _on_info_button_03_pressed():
+	$Informations.scale = Vector2(1,1)
+	$Informations.show_xaxado_info()
+	
+func _on_informations_close():
+	$Informations.scale = Vector2(0,0)

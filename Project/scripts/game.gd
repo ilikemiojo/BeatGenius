@@ -194,6 +194,10 @@ func _on_conductor_song_finished():
 		abrir_menu_vitoria()
 
 func _on_pause_pressed():
+	if(Singletons.free_play == 1):
+		$MenuPause/Background/VBoxContainer/VBoxContainer/Restart.hide()
+	else:
+		$MenuPause/Background/VBoxContainer/VBoxContainer/Restart.show()
 	$HUD.hide()
 	$MenuPause.scale = Vector2(1,1)
 	$Conductor.pauseTimer()
