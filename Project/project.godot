@@ -34,4 +34,4 @@ theme/custom_font="res://fontes/xilosa_.ttf"
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
