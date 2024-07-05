@@ -6,15 +6,15 @@ func _ready():
 	$Background/VBoxContainer/VBoxContainer/HBoxContainer2/Nivel02_perfect.hide()
 	$Background/VBoxContainer/VBoxContainer/HBoxContainer3/Nivel03_perfect.hide()
 	
-	$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_info.text = '   Recorde: ' + str(Singletons.highscore[0])
+	$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_info.text = '   Highscore: ' + str(Singletons.highscore[0])
 	if(Singletons.highscore[0] == Singletons.maxscore[0]):
 		$Background/VBoxContainer/VBoxContainer/HBoxContainer/Nivel01_perfect.show()
 		
-	$Background/VBoxContainer/VBoxContainer/HBoxContainer2/Nivel02_info.text = '   Recorde: ' + str(Singletons.highscore[1])
+	$Background/VBoxContainer/VBoxContainer/HBoxContainer2/Nivel02_info.text = '   Highscore: ' + str(Singletons.highscore[1])
 	if(Singletons.highscore[1] == Singletons.maxscore[1]):
 		$Background/VBoxContainer/VBoxContainer/HBoxContainer2/Nivel02_perfect.show()
 		
-	$Background/VBoxContainer/VBoxContainer/HBoxContainer3/Nivel03_info.text = '   Recorde: ' + str(Singletons.highscore[2])
+	$Background/VBoxContainer/VBoxContainer/HBoxContainer3/Nivel03_info.text = '   Highscore: ' + str(Singletons.highscore[2])
 	if(Singletons.highscore[2] == Singletons.maxscore[2]):
 		$Background/VBoxContainer/VBoxContainer/HBoxContainer3/Nivel03_perfect.show()
 
